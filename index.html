@@ -5,31 +5,67 @@
 <title>San Valentín</title>
 
 <style>
-  :root {
-    --letter-love: 80px;
-    --letter: pink;
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: "Arial", sans-serif;
   }
 
-  .San_Valentin {
+  h1 {
+    color: white;
+    font-size: 3rem;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    animation: latido 1.5s infinite;
+  }
+
+  @keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+  }
+
+  /* Corazones animados */
+  .corazon {
     position: absolute;
-    width: 90%;
-    font-size: 2rem;
-    font-family: "Te Amo", sans-serif;
-    height: var(--letter-love);
-    transform: translateX(-50%);
-    background: var(--letter);
-    left: 50%;
-    top: 50px;
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
+    color: rgba(255,255,255,0.8);
+    font-size: 25px;
+    animation: flotar 6s linear infinite;
+  }
+
+  @keyframes flotar {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
   }
 </style>
-
 </head>
+
 <body>
 
-<a href="#" class="San_Valentin">San Valentín</a>
+<h1>💖 Feliz San Valentín 💖</h1>
+
+<script>
+  // Generar corazones flotando
+  function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "❤️";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+      corazon.remove();
+    }, 6000);
+  }
+
+  setInterval(crearCorazon, 300);
+</script>
 
 </body>
 </html>
