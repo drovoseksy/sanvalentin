@@ -2,122 +2,111 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>San Valentín para Ana</title>
+<title>Para Ana 💖</title>
 
 <style>
   body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    background: #ffd6e8;
     font-family: "Poppins", sans-serif;
-    color: white;
-    overflow-x: hidden;
-  }
-
-  /* Menú superior */
-  nav {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    left: 0;
     display: flex;
     justify-content: center;
-    gap: 40px;
-    font-size: 1.2rem;
-    z-index: 10;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
   }
 
-  nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-  }
-
-  nav a:hover {
-    text-shadow: 0 0 10px white;
-  }
-
-  /* Secciones */
-  section {
-    padding: 120px 20px 80px;
+  .card {
+    background: white;
+    width: 330px;
+    padding: 25px;
+    border-radius: 20px;
     text-align: center;
+    box-shadow: 0 0 20px rgba(255, 100, 150, 0.4);
+    position: relative;
   }
 
   h1 {
-    font-size: 3rem;
+    color: #ff4d6d;
+    font-size: 1.8rem;
     margin-bottom: 10px;
-    animation: latido 1.8s infinite;
   }
 
-  @keyframes latido {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-    100% { transform: scale(1); }
+  .emoji {
+    font-size: 4rem;
+    margin: 10px 0;
   }
 
   .frase {
-    font-size: 1.3rem;
-    margin: 10px 0;
-    opacity: 0.9;
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 20px;
   }
 
-  /* Dibujos */
-  .dibujo {
-    font-size: 3rem;
-    margin: 20px 0;
+  .botones {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .btn {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
+
+  .no {
+    background: #1e1e8f;
+    color: white;
+  }
+
+  .no:hover {
+    background: #00006b;
+  }
+
+  .si {
+    background: #ff4d6d;
+    color: white;
+    font-weight: bold;
+  }
+
+  .si:hover {
+    background: #ff1f4a;
   }
 
   /* Corazones flotando */
   .corazon {
     position: fixed;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255, 0, 80, 0.7);
     font-size: 22px;
-    animation: flotar 7s linear infinite;
-    filter: drop-shadow(0 0 5px white);
+    animation: flotar 6s linear infinite;
   }
 
   @keyframes flotar {
     0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-900px) scale(1.6); opacity: 0; }
+    100% { transform: translateY(-800px) scale(1.6); opacity: 0; }
   }
 </style>
 </head>
 
 <body>
 
-<!-- Menú -->
-<nav>
-  <a href="#inicio">Inicio</a>
-  <a href="#frases">Frases</a>
-  <a href="#dibujos">Dibujos</a>
-</nav>
+<div class="card">
+  <h1>¿Quieres ser mi Valentín, Ana? 💖</h1>
 
-<!-- Sección principal -->
-<section id="inicio">
-  <h1>💖 Para Ana 💖</h1>
-  <p class="frase">Hoy te dedico esta página porque eres mi persona favorita.</p>
-</section>
+  <div class="emoji">🐻❤️🐰</div>
 
-<!-- Frases cursis -->
-<section id="frases">
-  <h2>Frases para ti</h2>
-  <p class="frase">💘 Contigo todo es más bonito.</p>
-  <p class="frase">💘 Eres mi lugar seguro.</p>
-  <p class="frase">💘 No sabía que me faltaba algo hasta que te conocí.</p>
-  <p class="frase">💘 Mi plan favorito siempre eres tú.</p>
-</section>
+  <p class="frase">Dime que sí, porfi… 🥺</p>
 
-<!-- Dibujos que os representen -->
-<section id="dibujos">
-  <h2>Dibujos que somos tú y yo</h2>
-  <div class="dibujo">❤️✨💑✨❤️</div>
-  <div class="dibujo">🐻💞🐰</div>
-  <p class="frase">Tú eres mi conejita y yo tu osito.</p>
-</section>
+  <div class="botones">
+    <button class="btn no" onclick="moverNo()">No 💔</button>
+    <button class="btn si" onclick="aceptar()">¡Sí! 💖</button>
+  </div>
+</div>
 
 <script>
   // Corazones flotando
@@ -126,13 +115,32 @@
     corazon.classList.add("corazon");
     corazon.innerHTML = "❤️";
     corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
     document.body.appendChild(corazon);
 
-    setTimeout(() => corazon.remove(), 7000);
+    setTimeout(() => corazon.remove(), 6000);
+  }
+  setInterval(crearCorazon, 300);
+
+  // Botón NO se escapa
+  function moverNo() {
+    const btn = document.querySelector(".no");
+    btn.style.position = "relative";
+    btn.style.left = (Math.random() * 150 - 75) + "px";
+    btn.style.top = (Math.random() * 150 - 75) + "px";
   }
 
-  setInterval(crearCorazon, 300);
+  // Botón SÍ
+  function aceptar() {
+    document.body.innerHTML = `
+      <h1 style="color:#ff1f4a; text-align:center; font-size:2.5rem;">
+        💖 Sabía que dirías que sí, Ana 💖
+      </h1>
+      <p style="text-align:center; font-size:1.3rem; color:#fff;">
+        Eres lo mejor que me ha pasado. Te quiero mucho. 💞
+      </p>
+    `;
+  }
 </script>
 
 </body>
