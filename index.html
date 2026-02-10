@@ -2,66 +2,134 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>San Valentín</title>
+<title>San Valentín para Ana</title>
 
 <style>
   body {
     margin: 0;
     padding: 0;
-    height: 100vh;
     background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    font-family: "Poppins", sans-serif;
+    color: white;
+    overflow-x: hidden;
+  }
+
+  /* Menú superior */
+  nav {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-family: "Arial", sans-serif;
+    gap: 40px;
+    font-size: 1.2rem;
+    z-index: 10;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  nav a:hover {
+    text-shadow: 0 0 10px white;
+  }
+
+  /* Secciones */
+  section {
+    padding: 120px 20px 80px;
+    text-align: center;
   }
 
   h1 {
-    color: white;
     font-size: 3rem;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8);
-    animation: latido 1.5s infinite;
+    margin-bottom: 10px;
+    animation: latido 1.8s infinite;
   }
 
   @keyframes latido {
     0% { transform: scale(1); }
-    50% { transform: scale(1.15); }
+    50% { transform: scale(1.12); }
     100% { transform: scale(1); }
   }
 
-  /* Corazones animados */
+  .frase {
+    font-size: 1.3rem;
+    margin: 10px 0;
+    opacity: 0.9;
+  }
+
+  /* Dibujos */
+  .dibujo {
+    font-size: 3rem;
+    margin: 20px 0;
+  }
+
+  /* Corazones flotando */
   .corazon {
-    position: absolute;
-    color: rgba(255,255,255,0.8);
-    font-size: 25px;
-    animation: flotar 6s linear infinite;
+    position: fixed;
+    color: rgba(255,255,255,0.9);
+    font-size: 22px;
+    animation: flotar 7s linear infinite;
+    filter: drop-shadow(0 0 5px white);
   }
 
   @keyframes flotar {
     0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+    100% { transform: translateY(-900px) scale(1.6); opacity: 0; }
   }
 </style>
 </head>
 
 <body>
 
-<h1>💖 Feliz San Valentín 💖</h1>
+<!-- Menú -->
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#frases">Frases</a>
+  <a href="#dibujos">Dibujos</a>
+</nav>
+
+<!-- Sección principal -->
+<section id="inicio">
+  <h1>💖 Para Ana 💖</h1>
+  <p class="frase">Hoy te dedico esta página porque eres mi persona favorita.</p>
+</section>
+
+<!-- Frases cursis -->
+<section id="frases">
+  <h2>Frases para ti</h2>
+  <p class="frase">💘 Contigo todo es más bonito.</p>
+  <p class="frase">💘 Eres mi lugar seguro.</p>
+  <p class="frase">💘 No sabía que me faltaba algo hasta que te conocí.</p>
+  <p class="frase">💘 Mi plan favorito siempre eres tú.</p>
+</section>
+
+<!-- Dibujos que os representen -->
+<section id="dibujos">
+  <h2>Dibujos que somos tú y yo</h2>
+  <div class="dibujo">❤️✨💑✨❤️</div>
+  <div class="dibujo">🐻💞🐰</div>
+  <p class="frase">Tú eres mi conejita y yo tu osito.</p>
+</section>
 
 <script>
-  // Generar corazones flotando
+  // Corazones flotando
   function crearCorazon() {
     const corazon = document.createElement("div");
     corazon.classList.add("corazon");
     corazon.innerHTML = "❤️";
     corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    corazon.style.animationDuration = (Math.random() * 3 + 4) + "s";
     document.body.appendChild(corazon);
 
-    setTimeout(() => {
-      corazon.remove();
-    }, 6000);
+    setTimeout(() => corazon.remove(), 7000);
   }
 
   setInterval(crearCorazon, 300);
@@ -69,3 +137,4 @@
 
 </body>
 </html>
+
